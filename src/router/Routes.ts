@@ -1,10 +1,8 @@
-import { Router } from 'express';
-import multer from 'multer';
+import express from 'express';
 import { createReading } from '../controller/Reader';
 
-const router = Router();
-const upload = multer({ dest: 'uploads/' });
+const router = express.Router();
 
-router.post('/readings', upload.single('meterImage'), createReading);
+router.post('/upload', createReading);
 
 export default router;

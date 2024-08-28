@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { processMeterImage } from '../service/AI'
+import { extrairValorDaImagem } from '../services/llmService'
 import { Reading } from '../model/reading';
 
 let readings: Reading[] = [];
@@ -13,7 +13,7 @@ export const createReading = async (req: Request, res: Response) => {
   }
 
   try {
-    const value = await processMeterImage(imagePath);
+    const value = await extrairValorDaImagem(imagePath);
 
     const newReading: Reading = {
       id: readings.length + 1,
